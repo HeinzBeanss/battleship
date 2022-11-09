@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../src/style.css" />
+    <title>Battleship</title>
+  </head>
+  <body>
+    <div id="overlay">
+      <div id="userinput">
+          <h2 id="welcome">Welcome to Battleship!</h2>
+          <label for="name">PLEASE ENTER YOUR NAME:</label>
+          <input type="text" name="name" id="name">
+          <button id="confirmname">Confirm</button>
+      </div>
+    </div>
+    <div class="header">BATTLESHIP</div>
+    <div class="game">
+      <div class="columns">
+        <div class="leftgame">
+          <h2 class="playername">Player 1</h2>
+        </div>
+        <div class="rightgame">
+          <h2 class="computername">Computer</h2>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="main.js"></script>
+  <!-- <script type="module" src="main.test.js"></script> -->
+</html>
