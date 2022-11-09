@@ -15,7 +15,15 @@ document.querySelector(".theme-toggle").addEventListener("click", setTheme);
 
 //
 
-const Ship = () => {
-  console.log("test");
+const Ship = (length, timesHit, isSunk = false, ) => {
+  this.timesHit = timesHit;
+  return {length, timesHit, isSunk}
 };
 
+const Gameboard = () => {
+  
+}
+
+
+
+export { Ship, Gameboard };
