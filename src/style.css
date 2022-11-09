@@ -1,0 +1,190 @@
+* {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+}
+
+:root.light {
+  --primary: #006a68;
+  --on-primary: #ffffff;
+  --secondary: #4a6362;
+  --error: #ba1a1a;
+  --error-container: #ffdad6;
+  --background: #fafdfc;
+  --on-background: #191c1c;
+  --surface: #fafdfc;
+  --on-surface: #191c1c;
+  --lighter-shade-grey: #f0f0f0;
+  --filter-test: invert(100%) sepia(2%) saturate(1097%) hue-rotate(77deg)
+    brightness(91%) contrast(96%);
+}
+
+:root.dark {
+  --primary: #4ddad6;
+  --on-primary: #003736;
+  --secondary: #b0ccca;
+  --on-secondary: #1b3534;
+  --error: #ffb4ab;
+  --on-error: #690005;
+  --error-container: #93000a;
+  --background: #191c1c;
+  --on-background: #e0e3e2;
+  --surface: rgb(30, 33, 33);
+  --on-surface: #e0e3e2;
+  --lighter-shade-grey: #e2e2e2;
+  --filter-test: invert(90%) sepia(13%) saturate(289%) hue-rotate(131deg)
+    brightness(91%) contrast(94%);
+}
+
+body {
+  height: 100vh;
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.topbar {
+  background-color: var(--on-background);
+  text-align: center;
+  color: var(--background);
+  padding: 2px 0px;
+}
+
+.theme-toggle {
+  position: fixed;
+  padding: 15px;
+  background-color: var(--on-background);
+  border-radius: 40%;
+  border: 0;
+  bottom: 2rem;
+  right: 2rem;
+}
+
+.themesvg {
+  filter: var(--filter-test);
+}
+
+.header {
+  color: var(--on-background);
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: 0.4rem;
+}
+
+h2 {
+  color: var(--on-background);
+  font-size: 1.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.columns {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+}
+
+.playernames {
+  display: flex;
+}
+
+.playername, .computername {
+  margin-left: 32px;
+}
+
+.row {
+  display: flex;
+  gap: 2px;
+}
+
+.square {
+  width: 32px;
+  height: 32px;
+  background-color: var(--on-background);
+}
+
+.square:hover {
+  background-color: #ffffffc9;
+}
+
+.playerboard {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.squarelabel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  color: var(--on-background);
+}
+
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#userinput {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: var(--surface);
+  top: 50%;
+  left: 50%;
+  color: white;
+  padding: 25px 40px;
+  gap: 2px;
+  border-radius: 0.5rem;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  border: 1px var(--primary) solid;
+}
+
+#userinput > label {
+  font-size: 0.9rem;
+}
+
+#userinput > input {
+  background-color: var(--lighter-shade-grey);
+  padding: 5px;
+  font-size: 1.5rem;
+  border-radius: 0.2rem;
+  border: none;
+}
+
+#userinput > button {
+  margin-top: 15px;
+  background-color: var(--surface);
+  color: var(--on-surface);
+  border: none;
+  padding: 5px 0px;
+  border-radius: 0.2rem;
+  font-size: 1.2rem;
+  border: 1px var(--primary) solid;
+}
+
+#userinput > button:hover {
+  box-shadow: #191c1c 2px 2px 2px;
+}
