@@ -188,3 +188,53 @@ h2 {
 #userinput > button:hover {
   box-shadow: #191c1c 2px 2px 2px;
 }
+
+.red {
+  background-color: red;
+}
+
+.preplacedsquare {
+  width: 32px;
+  height: 32px;
+  background-color: var(--on-background);
+}
+
+.ship {
+  width: fit-content;
+  height: fit-content;
+  border: 1px var(--primary) solid;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.horizontal {
+  
+  
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+}
+
+
+.shipbay {
+  display: flex;
+  gap: 10px;
+  padding-top: 20px;
+  margin-left: 32px;
+  justify-content: center;
+}
+
+.shipbayleft {
+  display: flex;
+  gap: 10px;
+}
+
+.shipbayright {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

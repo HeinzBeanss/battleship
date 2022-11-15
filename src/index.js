@@ -1,11 +1,12 @@
 import { Gameboard, Ship, Player } from "./project";
-import { getPlayerName, generatePlayerBoard, generateComputerBoard } from "./design";
+import { getPlayerName, generatePlayerBoard, generateComputerBoard, generateFakeShips } from "./design";
 
 
 
 // Game loop begins
 // Gets the player and creates both gameboards, and both objects.
-const playersname = getPlayerName(); 
+const playersname = "Player 1";
+// playersname = getPlayerName(); 
 generatePlayerBoard();
 const Player1 = Player(`${playersname}`, true);
 const Playerboard = Gameboard();
@@ -34,3 +35,5 @@ for (let i = 1; i < 7; i += 1) {
 console.log(Computerboard.shipArray);
 
 // console.log(Computerboard.placeShip(6, 5, 3, "horizontal"));
+
+generateFakeShips();
