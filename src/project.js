@@ -46,17 +46,12 @@ const Gameboard = () => {
   const shipArray = [];
 
   const placeShip = (length, xcoord, ycoord, position) => {
-    if (position === "vertical" && ycoord + length > 9) {
-      //
-    } else if (position === "horizontal" && xcoord + length > 9) {
-      //
-    } else {
+    
       // SOMEHWERE HERE ADD VALIDATION = GOING THROUGH ALL THE COORDS OF THE PREVIOUS SHIPS AND CHECKING THEY DONT EQUAL EACH OTHER.
       const newShip = Ship(length, xcoord, ycoord, position);
       shipArray.push(newShip);
       return shipArray;
-    }
-    return "Error";
+  
   };
 
   const receiveAttack = (xcoord, ycoord) => {

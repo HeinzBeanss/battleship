@@ -1,3 +1,5 @@
+
+
 const getPlayerName = () => {
     document.getElementById("overlay").style.display = "block";
     const namebutton = document.getElementById("confirmname");
@@ -47,7 +49,7 @@ const generatePlayerBoard = () => {
           row.appendChild(squarelabel);
         } else {
           const square = document.createElement("div");
-          square.classList.add("square");
+          square.classList.add("playersquare");
           square.setAttribute("id", `${j},${i}`)
           row.appendChild(square);
         }
@@ -104,50 +106,9 @@ const generateComputerBoard = () => {
   }
 }
 
-const generateFakeShips = () => {
-  const shipbay = document.querySelector(".shipbay");
-  // logic for every ship, look at the video
-  shipbay.forEach(ship => {
-
- 
-  shipone.addEventListener("dragstart", e => {
-    e.dataTransfer.setData("text/plain", shipone.id);
-    console.log("shiponedragstart")
-    console.log(e);
-    console.log(e.target);
-    if (e.offsetX > 32) {
-      console.log("second square");
-    } else if (e.offsetX < 33) {
-      console.log("first square")
-    }
-  })
-
-  const allsquares = document.querySelectorAll(".square");
-  allsquares.forEach(square => {
-    square.addEventListener("dragover", e => {
-
-      e.preventDefault();
-      // console.log(e);
-      // console.log(e.target);
-      // e.target.classList.add("red");
-
-    })
-
-    square.addEventListener("drop", e => {
-      e.preventDefault();
-      e.target.classList.add("red");
-
-      const droppedElement = e.dataTransfer.getData("text/plain");
-      console.log(droppedElement);
-    })
-  })
 
 
-})
-
-}
-
-export { getPlayerName, generatePlayerBoard, generateComputerBoard,  generateFakeShips}; 
+export { getPlayerName, generatePlayerBoard, generateComputerBoard}; 
 
   // for (const squaredropzone of document.querySelectorAll(".square")) {
   //   squaredropzone.addEventListener("dragover", e => {
