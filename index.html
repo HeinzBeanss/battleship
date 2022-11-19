@@ -16,12 +16,13 @@
   <body>
     <div id="overlay">
       <div id="userinput">
-          <h2 id="welcome">Welcome to Battleship!</h2>
-          <label for="name">PLEASE ENTER YOUR NAME:</label>
-          <input type="text" name="name" id="name">
-          <button id="confirmname">Confirm</button>
+        <h2 id="welcome">Welcome to Battleship!</h2>
+        <label for="name">PLEASE ENTER YOUR NAME:</label>
+        <input type="text" name="name" id="name" />
+        <button id="confirmname">Confirm</button>
       </div>
     </div>
+    <div class="secret"></div>
     <div class="header">BATTLESHIP</div>
     <div class="game">
       <div class="columns">
@@ -67,14 +68,22 @@
               </div>
             </div>
           </div>
+          <div class="buttonbay">
+            <button class="start">START</button>
+            <button class="reset">RESET</button>
+          </div>
         </div>
         <div class="rightgame">
           <h2 class="computername">Computer</h2>
           <div class="computerboard"></div>
+          <div class="playerguesses">Player's Last Guess:</div>
+          <div class="result"></div>
+          <div class="prevhitcoord"></div>
+          <div class="computerguesstitle">Computer's Guess:</div>
+          <div class="computerguess"></div>
         </div>
       </div>
     </div>
   </body>
   <script src="main.js"></script>
-  <!-- <script type="module" src="main.test.js"></script> -->
 </html>
