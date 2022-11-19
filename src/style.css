@@ -70,6 +70,8 @@ body {
   font-size: 2.4rem;
   font-weight: 600;
   letter-spacing: 0.4rem;
+  margin-bottom: 20px;
+  border-bottom: solid 1px var(--primary);
 }
 
 h2 {
@@ -85,7 +87,6 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 }
 
 .columns {
@@ -98,7 +99,8 @@ h2 {
   display: flex;
 }
 
-.playername, .computername {
+.playername,
+.computername {
   margin-left: 32px;
 }
 
@@ -107,7 +109,8 @@ h2 {
   /* gap: 2px; */
 }
 
-.square, .playersquare {
+.square,
+.playersquare {
   width: 32px;
   height: 32px;
   background-color: var(--on-background);
@@ -117,6 +120,12 @@ h2 {
 .square:hover {
   background-color: #ffffffc9;
 }
+
+/* .leftgame {
+  display: flex;
+  flex-direction:  column;
+  justify-content: center;
+} */
 
 .playerboard {
   display: flex;
@@ -128,8 +137,8 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   color: var(--on-background);
 }
 
@@ -142,7 +151,7 @@ h2 {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
   cursor: pointer;
 }
@@ -158,8 +167,8 @@ h2 {
   padding: 25px 40px;
   gap: 2px;
   border-radius: 0.5rem;
-  transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
   border: 1px var(--primary) solid;
 }
 
@@ -218,18 +227,15 @@ h2 {
 }
 
 .horizontal {
-  
-  
   display: flex;
   flex-direction: row;
   /* gap: 2px; */
 }
 
-
 .shipbay {
   display: flex;
   gap: 10px;
-  padding-top: 20px;
+  padding: 20px 0px;
   margin-left: 32px;
   justify-content: center;
 }
@@ -243,4 +249,67 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.buttonbay {
+  display: flex;
+  margin-left: 32px;
+  justify-content: center;
+  gap: 20px;
+}
+
+.prevhitcoord,
+.result,
+.playerguesses,
+.computerguess,
+.computerguesstitle {
+  text-align: center;
+  color: white;
+  /* padding: 0px 32px; */
+  /* font-size: 1.2rem; */
+  padding: 10px;
+  word-wrap: normal;
+  width: 100%;
+  box-sizing: border-box;
+  /* visibility: hidden; */
+  /* display: none; */
+}
+
+.result,
+.playerguesses,
+.computerguesstitle,
+.computerguess {
+  font-size: 1.4rem;
+}
+
+.failedhit {
+  background-color: #3b3b3b;
+}
+
+.successfulhit {
+  background-color: red;
+}
+
+button {
+  padding: 10px;
+  width: 40%;
+  background-color: var(--surface);
+  border-radius: 0.4rem;
+  border: var(--primary) 1px solid;
+  color: var(--on-surface);
+  font-size: 1.2rem;
+  letter-spacing: 0.2rem;
+}
+
+.secret {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+button:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
 }

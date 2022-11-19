@@ -1,21 +1,19 @@
-
-
 const getPlayerName = () => {
-    document.getElementById("overlay").style.display = "block";
-    const namebutton = document.getElementById("confirmname");
-    namebutton.addEventListener("click", () => {
-      const nameinput = document.getElementById("name");
-      const domplayername = document.querySelector(".playername");
+  document.getElementById("overlay").style.display = "block";
+  const namebutton = document.getElementById("confirmname");
+  namebutton.addEventListener("click", () => {
+    const nameinput = document.getElementById("name");
+    const domplayername = document.querySelector(".playername");
 
-      if (nameinput.value === "") {
-        nameinput.value = "Player 1";
-      }
+    if (nameinput.value === "") {
+      nameinput.value = "Player 1";
+    }
 
-      domplayername.textContent = nameinput.value;
-      document.getElementById("overlay").style.display = "none";
-      return nameinput.value;
-    })
-}
+    domplayername.textContent = nameinput.value;
+    document.getElementById("overlay").style.display = "none";
+    return nameinput.value;
+  });
+};
 
 const generatePlayerBoard = () => {
   const playerboarddiv = document.querySelector(".playerboard");
@@ -26,8 +24,8 @@ const generatePlayerBoard = () => {
   for (let i = 9; i >= -1; i -= 1) {
     const row = document.createElement("div");
     row.classList.add("row");
-    // for
-    if ( i === -1) {
+
+    if (i === -1) {
       for (let j = -1; j < 10; j += 1) {
         if (j === -1) {
           const squarelabel = document.createElement("div");
@@ -36,31 +34,29 @@ const generatePlayerBoard = () => {
         } else {
           const squarelabel = document.createElement("div");
           squarelabel.classList.add("squarelabel");
-          squarelabel.textContent = `${j}`
+          squarelabel.textContent = `${j}`;
           row.appendChild(squarelabel);
         }
-        }
-    } else { 
+      }
+    } else {
       for (let j = -1; j < 10; j += 1) {
         if (j === -1) {
           const squarelabel = document.createElement("div");
           squarelabel.classList.add("squarelabel");
-          squarelabel.textContent = `${i}`
+          squarelabel.textContent = `${i}`;
           row.appendChild(squarelabel);
         } else {
           const square = document.createElement("div");
           square.classList.add("playersquare");
-          square.setAttribute("id", `${j},${i}`)
+          square.setAttribute("id", `${j},${i}`);
           row.appendChild(square);
         }
-      
       }
     }
     //
     playerBoard.appendChild(row);
   }
-  
-}
+};
 
 const generateComputerBoard = () => {
   const computerboarddiv = document.querySelector(".computerboard");
@@ -72,7 +68,7 @@ const generateComputerBoard = () => {
     const row = document.createElement("div");
     row.classList.add("row");
     // for
-    if ( i === -1) {
+    if (i === -1) {
       for (let j = -1; j < 10; j += 1) {
         if (j === -1) {
           const squarelabel = document.createElement("div");
@@ -81,38 +77,28 @@ const generateComputerBoard = () => {
         } else {
           const squarelabel = document.createElement("div");
           squarelabel.classList.add("squarelabel");
-          squarelabel.textContent = `${j}`
+          squarelabel.textContent = `${j}`;
           row.appendChild(squarelabel);
         }
-        }
-    } else { 
+      }
+    } else {
       for (let j = -1; j < 10; j += 1) {
         if (j === -1) {
           const squarelabel = document.createElement("div");
           squarelabel.classList.add("squarelabel");
-          squarelabel.textContent = `${i}`
+          squarelabel.textContent = `${i}`;
           row.appendChild(squarelabel);
         } else {
           const square = document.createElement("div");
           square.classList.add("square");
-          square.setAttribute("id", `${j},${i}`)
+          square.setAttribute("id", `${j},${i}`);
           row.appendChild(square);
         }
-      
       }
     }
     //
     playerBoard.appendChild(row);
   }
-}
+};
 
-
-
-export { getPlayerName, generatePlayerBoard, generateComputerBoard}; 
-
-  // for (const squaredropzone of document.querySelectorAll(".square")) {
-  //   squaredropzone.addEventListener("dragover", e => {
-  //     console.log(e);
-  //     console.log(e.target);
-  //   })
-  // }
+export { getPlayerName, generatePlayerBoard, generateComputerBoard };
