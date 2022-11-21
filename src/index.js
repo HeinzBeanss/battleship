@@ -14,10 +14,15 @@ const Playerboard = Gameboard();
 generateComputerBoard();
 const Computerboard = Gameboard();
 const startbutton = document.querySelector(".start");
+startbutton.disabled = true;
 const resetbutton = document.querySelector(".reset");
 const result = document.querySelector(".result");
 const prevhitcoord = document.querySelector(".prevhitcoord");
 const allcomputersquares = document.querySelectorAll(".square");
+const directionArray = [];
+let direction;
+// let test = "1";
+// console.log(test);
 
 const generateComputerShips = () => {
   for (let i = 1; i < 7; i += 1) {
@@ -188,16 +193,112 @@ generateVisualShips();
 // create a reset button for all ships
 const computerMove = () => {
   const computerguess = document.querySelector(".computerguess");
-  const tempxcoord = Math.floor(Math.random() * 10);
-  const tempycoord = Math.floor(Math.random() * 10);
+  let tempendofarray = 0;
+  tempendofarray = Playerboard.SquaresHit.length;
+  let tempxcoord;
+  let tempycoord;
+  let xory;
+  let plusorminus;
+
+  // coding AI
+  // if it's the previous computer guess was a hit.
+  if (
+    computerguess.textContent ===
+    `Hit: ${Playerboard.SquaresHit[tempendofarray - 1]}`
+  ) {
+    const lastcoord = Playerboard.SquaresHit[tempendofarray - 1];
+    const coordarray = lastcoord.split(",");
+    const coordx = coordarray[0];
+    const coordy = coordarray[1];
+
+    // maintains current direction
+    if (
+      direction === "right" &&
+      coordx < 9 &&
+      directionArray.includes("right") === false
+    ) {
+      xory = 0;
+      plusorminus = 0;
+    } else if (
+      direction === "left" &&
+      coordx > 0 &&
+      directionArray.includes("left") === false
+    ) {
+      xory = 0;
+      plusorminus = 1;
+    } else if (
+      direction === "up" &&
+      coordy < 9 &&
+      directionArray.includes("up") === false
+    ) {
+      xory = 1;
+      plusorminus = 0;
+    } else if (
+      direction === "down" &&
+      coordy > 0 &&
+      directionArray.includes("down") === false
+    ) {
+      xory = 1;
+      plusorminus = 1;
+    } else if (directionArray.length === 4) {
+      tempxcoord = Math.floor(Math.random() * 10);
+      tempycoord = Math.floor(Math.random() * 10);
+    } else {
+      xory = Math.floor(Math.random() * 2); // 0 - 1
+      plusorminus = Math.floor(Math.random() * 2); // 0 - 1
+    }
+
+    // uses the direction to add to the coordinates.
+    if (xory === 0) {
+      if (plusorminus === 0) {
+        tempxcoord = parseInt(coordx, 10) + 1;
+        tempycoord = parseInt(coordy, 10);
+        direction = "right";
+      } else if (plusorminus === 1) {
+        tempxcoord = parseInt(coordx, 10) - 1;
+        tempycoord = parseInt(coordy, 10);
+        direction = "left";
+      }
+    } else if (xory === 1) {
+      if (plusorminus === 0) {
+        tempxcoord = parseInt(coordx, 10);
+        tempycoord = parseInt(coordy, 10) + 1;
+        direction = "up";
+      } else if (plusorminus === 1) {
+        tempxcoord = parseInt(coordx, 10);
+        tempycoord = parseInt(coordy, 10) - 1;
+        direction = "down";
+      }
+    }
+
+    if (tempxcoord < 0 || tempxcoord > 9 || tempycoord > 9 || tempycoord < 0) {
+      if (direction === "right") {
+        tempxcoord = -0;
+      } else if (direction === "left") {
+        tempxcoord = +0;
+      } else if (direction === "up") {
+        tempycoord = -0;
+      } else if (direction === "down") {
+        tempycoord = +0;
+      }
+    }
+  } else {
+    direction = undefined;
+    tempxcoord = Math.floor(Math.random() * 10);
+    tempycoord = Math.floor(Math.random() * 10);
+  }
   const coord = `${tempxcoord},${tempycoord}`;
   if (Playerboard.SquaresHit.includes(coord)) {
+    if (directionArray.includes(direction) === false) {
+      directionArray.push(direction);
+    }
     computerMove();
   } else {
+    directionArray.splice(0, directionArray.length);
+    // ^^ look into if that's in the right place.
     Playerboard.receiveAttack(tempxcoord, tempycoord);
     const allplayerssquares = document.querySelectorAll(".playersquare");
     allplayerssquares.forEach((playersquare) => {
-      let tempendofarray = 0;
       if (playersquare.id === coord) {
         // LOOP THROUGH
         for (let i = 0; i < Playerboard.shipArray.length; i += 1) {
@@ -215,6 +316,7 @@ const computerMove = () => {
                 Playerboard.SquaresHit[tempendofarray - 1]
               }`;
               playersquare.classList.add("failedhit");
+              // direction = undefined;
             } else if (
               playersquare.id ===
               Playerboard.shipArray[i].shipsCoordinatesArray[j]
@@ -231,6 +333,7 @@ const computerMove = () => {
       }
     });
   }
+  return direction;
 };
 
 const playerMove = (e) => {

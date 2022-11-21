@@ -6,11 +6,13 @@ const getPlayerName = () => {
     const domplayername = document.querySelector(".playername");
 
     if (nameinput.value === "") {
-      nameinput.value = "Player 1";
+      nameinput.value = "Player";
     }
 
     domplayername.textContent = nameinput.value;
     document.getElementById("overlay").style.display = "none";
+    const lastGuest = document.querySelector(".playerguesses");
+    lastGuest.textContent = `${nameinput.value}'s Last Guess:`;
     return nameinput.value;
   });
 };
