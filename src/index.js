@@ -9,6 +9,7 @@ import {
 // Gets the player and creates both gameboards, and both objects.
 let playersname = "Player 1";
 playersname = getPlayerName();
+console.log(playersname);
 generatePlayerBoard();
 const Playerboard = Gameboard();
 generateComputerBoard();
@@ -371,7 +372,8 @@ const playerMove = (e) => {
 
   const isOver = Computerboard.determineIfConcluded();
   if (isOver === true) {
-    result.textContent = `Game Over! ${playersname} wins!`;
+    const pname = document.querySelector(".playername");
+    result.textContent = `Game Over! ${pname.textContent} wins!`;
     result.style.color = "green";
     allcomputersquares.forEach((computersquares) => {
       computersquares.removeEventListener("click", playerMove);
